@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuego Mark — Advanced Client-Side Editor</title>
+
+  <!-- Reusable Fuego Design System -->
+  <link rel="stylesheet" href="fuego.css">
+
+  <!-- Fuego Mark Specific Styles -->
+  <link rel="stylesheet" href="mark.css">
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="./assets/icons/fire.ico">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="fuego-topbar">
+    <div class="logo">🔥 Fuego Mark</div>
+    <div class="doc-status" id="status">Saved</div>
+    <div class="cmd-trigger" id="cmdTrigger">⌘</div>
+  </header>
+
+  <!-- Main Editor Area -->
+  <main class="editor-container">
+
+    <!-- Editor Workspace -->
+    <div id="editor" class="editor" contenteditable="true" spellcheck="true">
+      <h1>Untitled Document</h1>
+      <p>Start writing your ideas here…</p>
+    </div>
+
+    <!-- Optional Sidebar / Command Palette -->
+    <div id="commandPalette" class="command-palette hidden">
+      <ul>
+        <li data-action="heading">Heading</li>
+        <li data-action="bold">Bold</li>
+        <li data-action="italic">Italic</li>
+        <li data-action="blockquote">Quote</li>
+        <li data-action="code">Code Block</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Status & Floating Tools -->
+  <div id="floatingToolbar" class="floating-toolbar hidden">
+    <button data-command="bold"><b>B</b></button>
+    <button data-command="italic"><i>I</i></button>
+    <button data-command="heading">H1</button>
+    <button data-command="code">{ }</button>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="mark.js" type="module"></script>
+
+</body>
+</html>
