@@ -1,0 +1,214 @@
+/* ------------------------------
+   MARK.CSS — Fuego Mark Editor Styling
+   Advanced & Long-Form Ready
+------------------------------ */
+
+/* ------------------------------
+   Editor Container
+------------------------------ */
+.editor-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--fuego-spacing-xl) var(--fuego-spacing-lg);
+  min-height: calc(100vh - 48px); /* full viewport minus topbar */
+  background: var(--fuego-bg);
+  transition: background var(--fuego-transition-medium);
+}
+
+#editor {
+  width: 100%;
+  max-width: 900px;
+  min-height: 70vh;
+  background: transparent;
+  outline: none;
+  line-height: 1.8;
+  font-size: 18px;
+  color: var(--fuego-text);
+  padding: var(--fuego-spacing-lg);
+  border-radius: var(--fuego-radius);
+  transition: background var(--fuego-transition-medium);
+}
+
+/* ------------------------------
+   Headings & Blocks
+------------------------------ */
+#editor h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: var(--fuego-spacing-lg) 0 var(--fuego-spacing-md) 0;
+}
+
+#editor h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: var(--fuego-spacing-md) 0 var(--fuego-spacing-md) 0;
+}
+
+#editor h3 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: var(--fuego-spacing-md) 0 var(--fuego-spacing-sm) 0;
+}
+
+#editor p {
+  margin: var(--fuego-spacing-sm) 0;
+}
+
+#editor blockquote {
+  border-left: 3px solid var(--fuego-accent);
+  margin: var(--fuego-spacing-md) 0;
+  padding-left: var(--fuego-spacing-md);
+  color: var(--fuego-muted);
+  font-style: italic;
+  background: rgba(255, 90, 31, 0.05);
+  border-radius: var(--fuego-radius);
+}
+
+/* ------------------------------
+   Code Blocks
+------------------------------ */
+#editor pre {
+  font-family: var(--fuego-font-code);
+  background: #1a1a1f;
+  padding: var(--fuego-spacing-md);
+  border-radius: var(--fuego-radius);
+  overflow-x: auto;
+  margin: var(--fuego-spacing-md) 0;
+  box-shadow: var(--fuego-shadow-sm);
+}
+
+/* Inline code */
+#editor code {
+  font-family: var(--fuego-font-code);
+  background: #222;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* ------------------------------
+   Focus Mode
+------------------------------ */
+.editor-container.focus-mode {
+  background: #0b0b0f;
+}
+
+.editor-container.focus-mode #editor {
+  box-shadow: 0 0 20px rgba(255, 90, 31, 0.2);
+  background: rgba(22, 22, 28, 0.95);
+  padding: var(--fuego-spacing-xl);
+}
+
+/* ------------------------------
+   Floating Toolbar
+------------------------------ */
+.floating-toolbar {
+  display: flex;
+  gap: var(--fuego-spacing-xs);
+  position: absolute;
+  padding: var(--fuego-spacing-xs);
+  border-radius: var(--fuego-radius);
+  background: var(--fuego-surface);
+  box-shadow: var(--fuego-shadow-lg);
+  z-index: 1000;
+  transition: transform var(--fuego-transition-fast), opacity var(--fuego-transition-fast);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating-toolbar.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floating-toolbar button {
+  background: var(--fuego-accent);
+  color: var(--fuego-text);
+  border: none;
+  padding: 4px 8px;
+  border-radius: var(--fuego-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--fuego-transition-fast);
+}
+
+.floating-toolbar button:hover {
+  background: #ff6f3f;
+}
+
+/* ------------------------------
+   Command Palette
+------------------------------ */
+.command-palette {
+  background: var(--fuego-surface);
+  width: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: var(--fuego-radius);
+  box-shadow: var(--fuego-shadow-lg);
+  z-index: 999;
+  transition: opacity var(--fuego-transition-medium), transform var(--fuego-transition-medium);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.command-palette.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.command-palette li {
+  padding: var(--fuego-spacing-sm) var(--fuego-spacing-md);
+  cursor: pointer;
+  transition: background var(--fuego-transition-fast);
+}
+
+.command-palette li:hover {
+  background: #222;
+  color: var(--fuego-accent);
+}
+
+/* ------------------------------
+   Selection Styles
+------------------------------ */
+#editor ::selection {
+  background: rgba(255, 90, 31, 0.3);
+}
+
+/* ------------------------------
+   Placeholder Text (for empty editor)
+------------------------------ */
+#editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--fuego-muted);
+  pointer-events: none;
+  display: block;
+}
+
+/* ------------------------------
+   Responsive Editor
+------------------------------ */
+@media screen and (max-width: 768px) {
+  #editor {
+    font-size: 16px;
+    padding: var(--fuego-spacing-md);
+  }
+
+  .command-palette {
+    width: 90%;
+  }
+}
+
+/* ------------------------------
+   Extra Enhancements
+------------------------------ */
+.editor-block {
+  padding: var(--fuego-spacing-sm) 0;
+  margin: var(--fuego-spacing-sm) 0;
+  border-radius: var(--fuego-radius);
+  transition: background var(--fuego-transition-fast);
+}
+
+.editor-block.selected {
+  background: rgba(255, 90, 31, 0.1);
+}
